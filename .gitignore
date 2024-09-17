@@ -1,0 +1,5 @@
+/.idea/
+/target/
+/cred.json
+/data-storage-service.iml
+/src/main/resources/
