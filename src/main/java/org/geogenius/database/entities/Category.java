@@ -1,4 +1,4 @@
-package org.geogenius.entity;
+package org.geogenius.database.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

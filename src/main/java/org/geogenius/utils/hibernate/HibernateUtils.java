@@ -1,4 +1,4 @@
-package org.geogenius.utils;
+package org.geogenius.utils.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

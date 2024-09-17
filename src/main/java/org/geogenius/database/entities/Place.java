@@ -1,4 +1,4 @@
-package org.geogenius.entity;
+package org.geogenius.database.entities;
 
 import jakarta.persistence.*;
 import jdk.jfr.Unsigned;
