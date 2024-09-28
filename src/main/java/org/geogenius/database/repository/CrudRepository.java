@@ -26,9 +26,8 @@ public abstract class CrudRepository<T> {
             if (transaction.getStatus() == TransactionStatus.ACTIVE || transaction.getStatus() == TransactionStatus.MARKED_ROLLBACK) {
                 transaction.rollback();
             }
-        } finally {
-            session.close();
         }
+
         return result;
     }
 }

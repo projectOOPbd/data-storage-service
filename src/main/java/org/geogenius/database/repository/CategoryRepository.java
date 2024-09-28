@@ -13,9 +13,10 @@ public class CategoryRepository extends CrudRepository<Category> {
     public Object create(Category category) {
         return executeInTransaction(session -> session.save(category) );
     }
+
     @Override
     public Category findById(Long id) {
-        return null;
+        return executeInTransaction(session -> session.get(Category.class, id));
     }
 
     @Override

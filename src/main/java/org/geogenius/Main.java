@@ -5,7 +5,9 @@ import org.geogenius.database.controller.UserControler;
 import org.geogenius.database.entities.Category;
 import org.geogenius.database.entities.Comment;
 import org.geogenius.database.entities.Image;
+import org.geogenius.database.entities.Place;
 import org.geogenius.database.repository.CommentRepository;
+import org.geogenius.database.repository.PlaceRepository;
 import org.geogenius.database.service.CategoryService;
 import org.geogenius.database.service.CommentServise;
 import org.geogenius.database.service.ImageService;
@@ -35,8 +37,10 @@ public class Main {
 //        String commentJSON = Files.readString(Path.of("src/main/resources/Comment.json"));
 //        Comment comment = ObjectParser.parseFromJSON(commentJSON,Comment.class);
 //        System.out.println(comment.toString());
-        testComment();
+//        testComment();
+        testPlace();
 
+//        testCategory();
     }
 
     public static void testCategory() throws IOException {
@@ -49,6 +53,19 @@ public class Main {
         categoryService.create(category);
     }
 
+    public static void testPlace() throws IOException {
+        Path inputPlaceJSONPath = Path.of("src/main/resources/Place.json");
+        String inputPlaceJSON = Files.readString(inputPlaceJSONPath);
+
+        Place place = ObjectParser.parseFromJSON(inputPlaceJSON, Place.class);
+        Category category = CategoryService.getCategoryByID(place.getCategoryId());
+
+        place.setCategory(category);
+
+        PlaceRepository placeRepository  = new PlaceRepository();
+        placeRepository.create(place);
+
+    }
     public static void testComment() throws IOException {
         Path inputCommentJSONPath = Path.of("src/main/resources/Comment.json");
         String inputCommentJSON = Files.readString(inputCommentJSONPath);
