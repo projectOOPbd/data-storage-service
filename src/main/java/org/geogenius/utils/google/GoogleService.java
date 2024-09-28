@@ -34,7 +34,7 @@ public class GoogleService {
 
     private static final Drive drive = createDriveService();
 
-    public static void uploadImageToDrive(java.io.File imageFile) throws IOException {
+    public static String uploadImageToDrive(java.io.File imageFile) throws IOException {
 
         // Створення метаданих для файлу
         File fileMetadata = new File();
@@ -46,8 +46,9 @@ public class GoogleService {
 
         // Завантаження файлу на Google Диск
         File uploadedFile = drive.files().create(fileMetadata, mediaContent).setFields("id,parents").execute();
-
         System.out.println("Файл завантажено. ID: " + uploadedFile.getId());
+
+        return uploadedFile.getId();
     }
 
 

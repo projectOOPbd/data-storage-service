@@ -8,11 +8,11 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 import java.util.List;
 
 public abstract class CrudRepository<T> {
-    abstract Object create(T entity);
-    abstract T findById(Long id);
-    abstract List<T> findAll();
-    abstract T update(Long id, T entity);
-    abstract void delete(Long id);
+    public abstract Object create(T entity);
+    public abstract T findById(Long id);
+    public abstract List<T> findAll();
+    public abstract T update(Long id, T entity);
+    public abstract void delete(Long id);
 
     protected <R> R executeInTransaction(TransactionFunction<R> function) {
         Session session = SessionManager.getSession();

@@ -1,25 +1,25 @@
 package org.geogenius;
 
+import org.geogenius.database.controller.UserControler;
+import org.geogenius.database.entities.Image;
+import org.geogenius.database.service.ImageService;
+import org.geogenius.utils.parser.ObjectParser;
 
-import org.checkerframework.checker.units.qual.C;
-import org.geogenius.database.entities.Category;
-import org.geogenius.database.repository.CategoryRepository;
-import org.geogenius.utils.hibernate.HibernateUtils;
-import org.hibernate.Session;
-
-import javax.swing.event.HyperlinkEvent;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        CategoryRepository categoryRepository = new CategoryRepository();
-
-
-//        Session session = HibernateUtils.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        Category category = (Category) session.save(new Category("sda124241"));
-//        session.getTransaction().commit();
+////        testImg();
+//        Path inputJImageJSONPath = Path.of("src/main/resources/image.json");
+//        String inputImageJSON = Files.readString(inputJImageJSONPath);
 //
-//        System.out.println(category.toString());
+//        Path inputUserJSONPath = Path.of("src/main/resources/Oleksandr.json");
+//        String inputUserJSON = Files.readString(inputUserJSONPath);
+//
+//        UserControler.addUser(inputUserJSON, inputImageJSON);
     }
+
 }

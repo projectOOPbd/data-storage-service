@@ -6,27 +6,27 @@ import java.util.List;
 
 public class PlaceImageRepository extends CrudRepository<PlaceImage> {
     @Override
-    Object create(PlaceImage placeImage) {
+    public Object create(PlaceImage placeImage) {
         return executeInTransaction(session -> session.save(placeImage));
     }
 
     @Override
-    PlaceImage findById(Long id) {
+    public PlaceImage findById(Long id) {
         return null;
     }
 
     @Override
-    List<PlaceImage> findAll() {
+    public List<PlaceImage> findAll() {
         return List.of();
     }
 
     @Override
-    PlaceImage update(Long id, PlaceImage entity) {
+    public PlaceImage update(Long id, PlaceImage entity) {
         return null;
     }
 
     @Override
-    void delete(Long id) {
+    public void delete(Long id) {
 
     }
 }

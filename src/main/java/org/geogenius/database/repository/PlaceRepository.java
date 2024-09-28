@@ -6,27 +6,27 @@ import java.util.List;
 
 public class PlaceRepository extends CrudRepository<Place> {
     @Override
-    Object create(Place entity) {
+    public Object create(Place entity) {
         return null;
     }
 
     @Override
-    Place findById(Long id) {
+    public Place findById(Long id) {
         return null;
     }
 
     @Override
-    List<Place> findAll() {
+    public List<Place> findAll() {
         return List.of();
     }
 
     @Override
-    Place update(Long id, Place entity) {
+    public Place update(Long id, Place entity) {
         return null;
     }
 
     @Override
-    void delete(Long id) {
+    public void delete(Long id) {
 
     }
 }
