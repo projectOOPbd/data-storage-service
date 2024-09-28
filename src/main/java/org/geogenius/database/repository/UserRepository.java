@@ -15,7 +15,7 @@ public class UserRepository extends CrudRepository<User> {
 
     @Override
     public User findById(Long id) {
-        return null;
+        return executeInTransaction(session -> session.get(User.class, id));
     }
 
     @Override

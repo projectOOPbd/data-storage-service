@@ -1,27 +1,28 @@
 package org.geogenius.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Category")
 @Entity
+@Data
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
+    @JsonIgnore
     private int categoryId;
 
     @Column(name = "category_name")
-    private String categoryName;
+    @JsonProperty("name")
+    private String name;
 
-    public Category(String categoryName) {
-        this.categoryName = categoryName;
-    }
 }

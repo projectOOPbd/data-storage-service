@@ -6,13 +6,13 @@ import java.util.List;
 
 public class PlaceRepository extends CrudRepository<Place> {
     @Override
-    public Object create(Place entity) {
-        return null;
+    public Object create(Place place) {
+        return executeInTransaction(session -> session.save(place));
     }
 
     @Override
     public Place findById(Long id) {
-        return null;
+        return executeInTransaction(session -> session.get(Place.class, id));
     }
 
     @Override
