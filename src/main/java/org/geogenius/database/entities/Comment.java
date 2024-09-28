@@ -53,11 +53,4 @@ public class Comment {
     @JsonIgnore
     private Place place;
 
-
-    @PrePersist
-    @PreUpdate
-    public void onPersist() {
-        this.user = UserControler.getUserById(userId);
-//        this.place =;
-    }
 }

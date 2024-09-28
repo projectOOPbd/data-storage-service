@@ -6,13 +6,13 @@ import org.geogenius.database.repository.UserRepository;
 
 @AllArgsConstructor
 public class UserService {
-    private final UserRepository userRepository = new UserRepository();
+    private static final UserRepository userRepository = new UserRepository();
 
-    public void addUser(User user) {
+    public static void addUser(User user) {
         userRepository.create(user);
     }
 
-    public User getUserById(long id){
+    public static User getUserById(long id){
         return userRepository.findById(id);
     }
 

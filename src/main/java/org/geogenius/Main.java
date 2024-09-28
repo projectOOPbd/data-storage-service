@@ -35,7 +35,7 @@ public class Main {
 //        String commentJSON = Files.readString(Path.of("src/main/resources/Comment.json"));
 //        Comment comment = ObjectParser.parseFromJSON(commentJSON,Comment.class);
 //        System.out.println(comment.toString());
-//        testComment();
+        testComment();
 
     }
 
@@ -52,15 +52,12 @@ public class Main {
     public static void testComment() throws IOException {
         Path inputCommentJSONPath = Path.of("src/main/resources/Comment.json");
         String inputCommentJSON = Files.readString(inputCommentJSONPath);
-        CommentRepository commentRepository = new CommentRepository();
 
         // Парсинг JSON
         Comment comment = ObjectParser.parseFromJSON(inputCommentJSON, Comment.class);
         System.out.println(comment.toString());
 
-        // Отримання сесії
-
-        commentRepository.create(comment);
+        CommentServise.addComment(comment);
     }
 
 

@@ -5,13 +5,13 @@ import org.geogenius.database.entities.User;
 import org.geogenius.database.repository.PlaceRepository;
 
 public class PlaceService {
-    private final PlaceRepository placeRepository = new PlaceRepository();
+    private static final PlaceRepository placeRepository = new PlaceRepository();
 
-    public void addPlace(Place place) {
+    public static void addPlace(Place place) {
         placeRepository.create(place);
     }
 
-    public Place getUserById(long id){
+    public static Place getUserById(long id){
         return placeRepository.findById(id);
     }
 }

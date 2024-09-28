@@ -8,8 +8,9 @@ import org.geogenius.utils.parser.ObjectParser;
 public class CommentController {
     private static final CommentServise commentServise = new CommentServise();
 
-    public static void addComent(String commentJSON) {
+    public void addComment(String commentJSON) {
         Comment comment = ObjectParser.parseFromJSON(commentJSON,Comment.class);
         commentServise.addComment(comment);
     }
+
 }
