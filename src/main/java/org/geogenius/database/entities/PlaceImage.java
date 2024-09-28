@@ -12,22 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Image")
-public class Image {
+@Table(name = "place_image")
+public class PlaceImage {
     @Id
-    @Column(name = "image_id")
+    @Column(name = "place_image_id")
     @Unsigned
-    private int id;
+    private int placeImageId;
 
     @Column(name = "image_name")
-    private String imageName;
+    private String imageId;
 
-    @Column(name = "image_link")
-    private String imageLink;
+    @Column(name = "place_id")
+    private String placeId;
 
-
-    @Unsigned
-    @ManyToOne
-    @JoinColumn(name = "place_id")
-    private Place place;
 }

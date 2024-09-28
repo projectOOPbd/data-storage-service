@@ -34,4 +34,7 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "image_id")
+    private String imageId;
 }

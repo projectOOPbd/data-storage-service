@@ -13,7 +13,6 @@ public class PropertiesUtil {
     }
 
     private static void loadProperties() {
-        System.out.println(PROPERTIES_FILE);
         try {
             InputStream inputStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(PropertiesUtil.PROPERTIES_FILE);
             PROPERTIES.load(inputStream);

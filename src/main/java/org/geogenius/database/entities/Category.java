@@ -1,9 +1,6 @@
 package org.geogenius.database.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +14,14 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private int categoryId;
 
     @Column(name = "category_name")
     private String categoryName;
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

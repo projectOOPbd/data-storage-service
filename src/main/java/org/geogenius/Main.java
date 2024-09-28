@@ -1,19 +1,25 @@
 package org.geogenius;
 
 
-import org.geogenius.database.entities.Image;
+import org.checkerframework.checker.units.qual.C;
+import org.geogenius.database.entities.Category;
+import org.geogenius.database.repository.CategoryRepository;
 import org.geogenius.utils.hibernate.HibernateUtils;
 import org.hibernate.Session;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
+import javax.swing.event.HyperlinkEvent;
 import java.io.IOException;
-import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        CategoryRepository categoryRepository = new CategoryRepository();
+
+
+//        Session session = HibernateUtils.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        Category category = (Category) session.save(new Category("sda124241"));
+//        session.getTransaction().commit();
+//
+//        System.out.println(category.toString());
     }
 }
