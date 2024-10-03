@@ -12,7 +12,7 @@ public class PlaceImageRepository extends CrudRepository<PlaceImage> {
 
     @Override
     public PlaceImage findById(Long id) {
-        return null;
+        return executeInTransaction(session -> session.get(PlaceImage.class, id));
     }
 
     @Override

@@ -1,46 +1,18 @@
 package org.geogenius;
 
-import org.geogenius.database.controller.CommentController;
 import org.geogenius.database.controller.UserControler;
-import org.geogenius.database.entities.Category;
-import org.geogenius.database.entities.Comment;
-import org.geogenius.database.entities.Image;
-import org.geogenius.database.entities.Place;
-import org.geogenius.database.repository.CommentRepository;
+import org.geogenius.database.entities.*;
 import org.geogenius.database.repository.PlaceRepository;
-import org.geogenius.database.service.CategoryService;
-import org.geogenius.database.service.CommentServise;
-import org.geogenius.database.service.ImageService;
-import org.geogenius.database.service.PlaceService;
-import org.geogenius.utils.hibernate.SessionManager;
+import org.geogenius.database.service.*;
 import org.geogenius.utils.parser.ObjectParser;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Base64;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        testUser();
-//        Path inputJImageJSONPath = Path.of("src/main/resources/image.json");
-//        String inputImageJSON = Files.readString(inputJImageJSONPath);
-//
-//        Path inputUserJSONPath = Path.of("src/main/resources/Oleksandr.json");
-//        String inputUserJSON = Files.readString(inputUserJSONPath);
-//
-//        UserControler.addUser(inputUserJSON, inputImageJSON);
-
-//        String commentJSON = Files.readString(Path.of("src/main/resources/Comment.json"));
-//        Comment comment = ObjectParser.parseFromJSON(commentJSON,Comment.class);
-//        System.out.println(comment.toString());
-//        testComment();
-        testPlace();
-
-//        testCategory();
+        testImagePlace();
     }
 
     public static void testCategory() throws IOException {
@@ -87,4 +59,14 @@ public class Main {
         UserControler.addUser(inputUserJSON, inputImageJSON);
     }
 
+    public static void testImagePlace() throws IOException {
+        String inputImageJSON = Files.readString(Path.of("src/main/resources/image.json"));
+
+        String inputImagePlaceJSON = Files.readString(Path.of("src/main/resources/ImagePlace.json"));
+        PlaceImage placeImage = ObjectParser.parseFromJSON(inputImagePlaceJSON, PlaceImage.class);
+        System.out.println();
+
+        PlaceImageService.addImagePlace(inputImageJSON,placeImage.getPlaceId());
+
+    }
 }

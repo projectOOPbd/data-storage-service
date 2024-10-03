@@ -12,7 +12,7 @@ public class CommentServise {
 
     public static void addComment(Comment comment) {
         User user = UserService.getUserById(comment.getUserId());
-        Place place = PlaceService.getUserById(comment.getPlaceId());
+        Place place = PlaceService.getPlaceById(comment.getPlaceId());
 
         comment.setUser(user);
         comment.setPlace(place);

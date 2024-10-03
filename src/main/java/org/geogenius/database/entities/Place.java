@@ -47,4 +47,5 @@ public class Place {
     @Column(name = "longitude")
     @JsonProperty("longitude")
     private String longitude;
+
 }

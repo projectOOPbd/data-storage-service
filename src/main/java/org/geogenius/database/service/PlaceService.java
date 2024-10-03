@@ -17,7 +17,7 @@ public class PlaceService {
         placeRepository.create(place);
     }
 
-    public static Place getUserById(long id){
+    public static Place getPlaceById(long id){
         return placeRepository.findById(id);
     }
 }

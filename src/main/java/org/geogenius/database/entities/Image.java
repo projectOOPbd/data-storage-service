@@ -10,8 +10,10 @@ import org.checkerframework.checker.units.qual.N;
 @NoArgsConstructor
 @Data
 public class Image {
+
     @JsonProperty("image_name")
     private String imageName;
+
 
     @JsonProperty("image")
     public String image;

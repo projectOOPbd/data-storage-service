@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     @JsonIgnore
     private int categoryId;

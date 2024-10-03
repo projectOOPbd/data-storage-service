@@ -53,4 +53,5 @@ public class Comment {
     @JsonIgnore
     private Place place;
 
+
 }

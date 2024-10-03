@@ -7,7 +7,6 @@ import org.geogenius.database.repository.UserRepository;
 @AllArgsConstructor
 public class UserService {
     private static final UserRepository userRepository = new UserRepository();
-
     public static void addUser(User user) {
         userRepository.create(user);
     }
