@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.checkerframework.checker.units.qual.C;
 
 @Data
 @AllArgsConstructor
@@ -35,7 +36,7 @@ public class Place {
     private Long categoryId;
 
     @Unsigned
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     @JsonIgnore
     private Category category;

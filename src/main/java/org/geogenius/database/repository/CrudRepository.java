@@ -11,7 +11,7 @@ public abstract class CrudRepository<T> {
     public abstract Object create(T entity);
     public abstract T findById(Long id);
     public abstract List<T> findAll();
-    public abstract T update(Long id, T entity);
+    public abstract T update(T entity);
     public abstract void delete(Long id);
 
     protected <R> R executeInTransaction(TransactionFunction<R> function) {

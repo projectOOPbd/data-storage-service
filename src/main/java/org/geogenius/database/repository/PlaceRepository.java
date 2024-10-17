@@ -17,16 +17,18 @@ public class PlaceRepository extends CrudRepository<Place> {
 
     @Override
     public List<Place> findAll() {
-        return List.of();
+        return executeInTransaction(session -> session.createQuery("from Place").list());
     }
 
     @Override
-    public Place update(Long id, Place entity) {
-        return null;
+    public Place update(Place entity) {
+        return executeInTransaction(session -> session.merge(entity));
     }
 
     @Override
     public void delete(Long id) {
-
+        executeInTransaction(session -> session.createQuery("delete from Place where id = :id")
+                .setParameter("id", id)
+                .executeUpdate());
     }
 }

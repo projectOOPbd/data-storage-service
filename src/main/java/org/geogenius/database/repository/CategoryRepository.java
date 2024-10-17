@@ -21,16 +21,19 @@ public class CategoryRepository extends CrudRepository<Category> {
 
     @Override
     public List<Category> findAll() {
-        return List.of();
+        return executeInTransaction(session -> session.createQuery("from Category").list());
     }
-
+    
     @Override
-    public Category update(Long id, Category entity) {
-        return null;
+    public Category update(Category entity) {
+        return executeInTransaction(session -> session.merge(entity));
     }
 
     @Override
     public void delete(Long id) {
+        executeInTransaction(session -> session.createQuery("delete from Category where id = :id")
+                .setParameter("id", id)
+                .executeUpdate());
     }
 
 }

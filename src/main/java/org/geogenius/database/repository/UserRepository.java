@@ -20,16 +20,18 @@ public class UserRepository extends CrudRepository<User> {
 
     @Override
     public List<User> findAll() {
-        return List.of();
+        return executeInTransaction(session -> session.createQuery("from User").list());
     }
 
     @Override
-    public User update(Long id, User entity) {
-        return null;
+    public User update(User entity) {
+        return executeInTransaction(session -> session.merge(entity));
     }
 
     @Override
     public void delete(Long id) {
-
+        executeInTransaction(session -> session.createQuery("delete from User where id = :id")
+                .setParameter("id", id)
+                .executeUpdate());
     }
 }

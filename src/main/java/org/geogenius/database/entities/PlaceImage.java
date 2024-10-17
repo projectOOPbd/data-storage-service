@@ -20,7 +20,6 @@ public class PlaceImage {
     @Id
     @Column(name = "place_image_id")
     @Unsigned
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int placeImageId;
 
     @Column(name = "image_id")

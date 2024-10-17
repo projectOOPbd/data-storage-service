@@ -1,10 +1,14 @@
 package org.geogenius;
 
+import org.checkerframework.checker.units.qual.C;
 import org.geogenius.database.controller.UserControler;
 import org.geogenius.database.entities.*;
+import org.geogenius.database.repository.CategoryRepository;
 import org.geogenius.database.repository.PlaceRepository;
 import org.geogenius.database.service.*;
+import org.geogenius.utils.hibernate.SessionManager;
 import org.geogenius.utils.parser.ObjectParser;
+import org.hibernate.Session;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +16,8 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        testImagePlace();
+        CategoryRepository categoryRepository = new CategoryRepository();
+        categoryRepository.delete(18L);
     }
 
     public static void testCategory() throws IOException {
@@ -20,9 +25,12 @@ public class Main {
         String inputCommentJSON = Files.readString(inputCategoryJSONPath);
 
         Category category = ObjectParser.parseFromJSON(inputCommentJSON, Category.class);
-
         CategoryService categoryService = new CategoryService();
+        System.out.println(category.toString());
         categoryService.create(category);
+        //Session session = SessionManager.getSession();
+//        Category category1 = session.createQuery("from Category ",Category.class).list().get(0);
+//        System.out.println(category1);
     }
 
     public static void testPlace() throws IOException {

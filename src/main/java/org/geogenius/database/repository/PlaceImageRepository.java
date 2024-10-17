@@ -17,16 +17,19 @@ public class PlaceImageRepository extends CrudRepository<PlaceImage> {
 
     @Override
     public List<PlaceImage> findAll() {
-        return List.of();
+        return executeInTransaction(session -> session.createQuery("from PlaceImage").list());
     }
 
     @Override
-    public PlaceImage update(Long id, PlaceImage entity) {
-        return null;
+    public PlaceImage update(PlaceImage entity) {
+
+        return executeInTransaction(session -> session.merge(entity));
     }
 
     @Override
     public void delete(Long id) {
-
+        executeInTransaction(session -> session.createQuery("delete from PlaceImage where id = :id")
+                .setParameter("id", id)
+                .executeUpdate());
     }
 }
