@@ -16,10 +16,23 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        CategoryRepository categoryRepository = new CategoryRepository();
-        categoryRepository.delete(18L);
+        testDeleteCategory();
     }
 
+    public static void testDeleteCategory() {
+        Category category = CategoryService.getCategoryByID(1L);
+        CategoryService.delete(category);
+    }
+    public static void testUpdateCategory() throws IOException {
+        Category category = CategoryService.getCategoryByID(1L);
+        System.out.println(category.toString());
+        category.setName("хуй");
+        CategoryService.update(category);
+    }
+    public static void countPlaceWithCategory(){
+        PlaceRepository placeRepository = new PlaceRepository();
+        System.out.println(placeRepository.countPlaceWithCategory(2L));
+    }
     public static void testCategory() throws IOException {
         Path inputCategoryJSONPath = Path.of("src/main/resources/Category.json");
         String inputCommentJSON = Files.readString(inputCategoryJSONPath);
@@ -74,7 +87,7 @@ public class Main {
         PlaceImage placeImage = ObjectParser.parseFromJSON(inputImagePlaceJSON, PlaceImage.class);
         System.out.println();
 
-        PlaceImageService.addImagePlace(inputImageJSON,placeImage.getPlaceId());
+        PlaceImageService.addImagePlace(inputImageJSON, placeImage.getPlaceId());
 
     }
 }

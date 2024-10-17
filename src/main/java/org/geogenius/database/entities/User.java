@@ -1,10 +1,7 @@
 package org.geogenius.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +16,8 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     @Column(name = "user_id")
-    private int userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userId;
 
     @JsonProperty("first_name")
     @Column(name = "first_name")

@@ -12,7 +12,7 @@ import java.io.IOException;
 public class PlaceImageService {
     private static final PlaceImageRepository placeImageRepository = new PlaceImageRepository();
 
-    public static void addImagePlace(String imageJSON,int placeID) {
+    public static void addImagePlace(String imageJSON,long placeID) {
 
         String imageID;
         try {

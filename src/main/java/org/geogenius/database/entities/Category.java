@@ -17,8 +17,9 @@ import lombok.NoArgsConstructor;
 public class Category {
     @Id
     @Column(name = "category_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private int categoryId;
+    private long categoryId;
 
     @Column(name = "category_name")
     @JsonProperty("name")

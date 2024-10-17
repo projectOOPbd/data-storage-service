@@ -31,4 +31,10 @@ public class PlaceRepository extends CrudRepository<Place> {
                 .setParameter("id", id)
                 .executeUpdate());
     }
+
+    public long countPlaceWithCategory(Long categoriesID) {
+        return executeInTransaction(session -> session.createQuery("select count(*) from Place where category.id = :id",Long.class)
+                .setParameter("id",categoriesID)
+                .getSingleResult());
+    }
 }

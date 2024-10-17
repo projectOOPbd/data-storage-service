@@ -21,7 +21,8 @@ public class Place {
     @Id
     @Column(name = "place_id")
     @Unsigned
-    private int placeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long placeId;
 
     @Column(name = "name")
     @JsonProperty("name")

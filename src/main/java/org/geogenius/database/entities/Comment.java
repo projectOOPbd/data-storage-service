@@ -25,7 +25,8 @@ public class Comment {
     @Id
     @Column(name = "comment_id")
     @Unsigned
-    private int commentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long commentId;
 
     @Column(name = "text")
     @JsonProperty("text")

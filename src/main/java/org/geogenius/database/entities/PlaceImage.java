@@ -20,7 +20,8 @@ public class PlaceImage {
     @Id
     @Column(name = "place_image_id")
     @Unsigned
-    private int placeImageId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long placeImageId;
 
     @Column(name = "image_id")
     @JsonIgnore
@@ -28,7 +29,7 @@ public class PlaceImage {
 
     @Column(name = "place_id")
     @Transient
-    private int placeId;
+    private long placeId;
 
 
     @ManyToOne
