@@ -20,4 +20,16 @@ public class PlaceService {
     public static Place getPlaceById(long id){
         return placeRepository.findById(id);
     }
+
+    public static void updatePlace(Place place) {
+        placeRepository.update(place);
+    }
+
+    public static void deletePlace(long id) {
+        PlaceImageService.deleteAllPlaceImages(id);
+    }
+
+    public static long countPlaceWithCategory(Long categoriesID){
+        return placeRepository.countPlaceWithCategory(categoriesID);
+    }
 }

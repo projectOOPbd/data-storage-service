@@ -21,21 +21,22 @@ public class PlaceImageService {
             throw new RuntimeException(e);
         }
 
-//        PlaceImage placeImage = PlaceImage.builder()
-//                .imageId(imageID)
-//                .place(PlaceService.getPlaceById(placeID))
-//                .build();
         PlaceImage placeImage = PlaceImage.builder()
                 .place(PlaceService.getPlaceById(placeID))
                 .imageId(imageID)
                 .build();
-        System.err.println(placeImage.toString());
 
         placeImageRepository.create(placeImage);
     }
 
-//    public static User getUserById(long id){
-//        return userRepository.findById(id);
-//    }
+    public static void deleteAllPlaceImages(Long placeID) {
 
+        placeImageRepository.findPlaceImageIds(placeID).forEach(ImageService::deleteImageById);
+
+        placeImageRepository.deleteAllPlaceImages(placeID);
+    }
+
+    public static void main(String[] args) {
+        deleteAllPlaceImages(1L);
+    }
 }

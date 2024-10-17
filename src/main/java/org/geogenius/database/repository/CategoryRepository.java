@@ -35,5 +35,4 @@ public class CategoryRepository extends CrudRepository<Category> {
                 .setParameter("id", id)
                 .executeUpdate());
     }
-
 }

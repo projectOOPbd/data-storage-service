@@ -21,4 +21,16 @@ public class ImageService {
 
         return GoogleService.uploadImageToDrive(imagePath.toFile());
     }
+
+    public static void deleteImageById(String imageId) {
+        try {
+            GoogleService.deleteImageFromDrive(imageId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        deleteImageById("1S4w0LTD4CCiafyTFEGAQafqcCPf6ro_R");
+    }
 }

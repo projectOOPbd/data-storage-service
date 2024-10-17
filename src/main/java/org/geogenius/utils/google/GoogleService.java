@@ -83,6 +83,4 @@ public class GoogleService {
             throw new RuntimeException(e);
         }
     }
-
-
 }

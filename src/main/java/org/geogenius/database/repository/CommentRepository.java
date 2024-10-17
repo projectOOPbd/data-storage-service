@@ -11,8 +11,8 @@ public class CommentRepository extends CrudRepository<Comment> {
     }
 
     @Override
-    public Comment findById(Long id) {
-        return executeInTransaction(session -> session.get(Comment.class, id));
+    public Comment findById(Long commentId) {
+        return executeInTransaction(session -> session.get(Comment.class, commentId));
     }
 
     @Override
@@ -27,9 +27,20 @@ public class CommentRepository extends CrudRepository<Comment> {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long commentId) {
         executeInTransaction(session -> session.createQuery("delete from Comment where id = :id")
-                .setParameter("id", id)
+                .setParameter("id", commentId)
                 .executeUpdate());
+    }
+
+    public void deleteAllPlaceComments(Long placeId) {
+        executeInTransaction(session -> session.createQuery("delete from Comment where place.placeId = :id")
+                .setParameter("id", placeId)
+                .executeUpdate());
+    }
+
+    public static void main(String[] args) {
+        CommentRepository repo = new CommentRepository();
+        repo.deleteAllPlaceComments(1L);
     }
 }

@@ -16,18 +16,25 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        testDeleteCategory();
+//        testCategory();
+//        testPlace();
+//        testImagePlace();
+        testComment();
+//        testUser();
     }
 
+    public static void testPlaceImageRepositoryDeleteByPlaceId(){
+
+    }
     public static void testDeleteCategory() {
         Category category = CategoryService.getCategoryByID(1L);
-        CategoryService.delete(category);
+        CategoryService.deleteCategory(category.getCategoryId());
     }
     public static void testUpdateCategory() throws IOException {
         Category category = CategoryService.getCategoryByID(1L);
         System.out.println(category.toString());
         category.setName("хуй");
-        CategoryService.update(category);
+        CategoryService.updateCategory(category);
     }
     public static void countPlaceWithCategory(){
         PlaceRepository placeRepository = new PlaceRepository();
@@ -40,7 +47,7 @@ public class Main {
         Category category = ObjectParser.parseFromJSON(inputCommentJSON, Category.class);
         CategoryService categoryService = new CategoryService();
         System.out.println(category.toString());
-        categoryService.create(category);
+        categoryService.addCategory(category);
         //Session session = SessionManager.getSession();
 //        Category category1 = session.createQuery("from Category ",Category.class).list().get(0);
 //        System.out.println(category1);
@@ -85,7 +92,6 @@ public class Main {
 
         String inputImagePlaceJSON = Files.readString(Path.of("src/main/resources/ImagePlace.json"));
         PlaceImage placeImage = ObjectParser.parseFromJSON(inputImagePlaceJSON, PlaceImage.class);
-        System.out.println();
 
         PlaceImageService.addImagePlace(inputImageJSON, placeImage.getPlaceId());
 

@@ -37,4 +37,5 @@ public class PlaceRepository extends CrudRepository<Place> {
                 .setParameter("id",categoriesID)
                 .getSingleResult());
     }
+
 }

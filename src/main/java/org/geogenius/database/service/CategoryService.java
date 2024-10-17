@@ -7,26 +7,25 @@ import org.geogenius.utils.parser.ObjectParser;
 
 public class CategoryService {
     private static final CategoryRepository categoryRepository = new CategoryRepository();
-    private static final PlaceRepository placeRepository = new PlaceRepository();
 
-    public static void create(Category category) {
+    public static void addCategory(Category category) {
         categoryRepository.create(category);
     }
 
-    public static Category getCategoryByID(Long id) {
-        return categoryRepository.findById(id);
+    public static Category getCategoryByID(Long categoryId) {
+        return categoryRepository.findById(categoryId);
     }
 
-    public static void delete(Category category) {
-
-         if(placeRepository.countPlaceWithCategory(category.getCategoryId()) != 0){
+    public static void deleteCategory(Long categoryId) {
+         if(PlaceService.countPlaceWithCategory(categoryId) != 0){
              System.out.println("Sorry you can`t delete this category");
              return;
          }
-         categoryRepository.delete(category.getCategoryId());
+         categoryRepository.delete(categoryId);
 
     }
-    public static void update(Category category) {
+
+    public static void updateCategory(Category category) {
         categoryRepository.update(category);
     }
 }

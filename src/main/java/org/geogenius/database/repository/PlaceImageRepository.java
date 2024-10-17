@@ -28,8 +28,21 @@ public class PlaceImageRepository extends CrudRepository<PlaceImage> {
 
     @Override
     public void delete(Long id) {
-        executeInTransaction(session -> session.createQuery("delete from PlaceImage where id = :id")
+        executeInTransaction(session -> session.createQuery("delete from PlaceImage where placeImageId = :id")
                 .setParameter("id", id)
                 .executeUpdate());
     }
+
+    public void deleteAllPlaceImages(Long placeId){
+        executeInTransaction(session -> session.createQuery("delete from PlaceImage where place.placeId = :placeId")
+                        .setParameter("placeId", placeId)
+                        .executeUpdate());
+    }
+
+    public List<String> findPlaceImageIds(Long placeId) {
+        return executeInTransaction(session -> session.createQuery("Select imageId from PlaceImage where place.placeId = :id")
+                .setParameter("id",placeId)
+                .getResultList());
+    }
+
 }
